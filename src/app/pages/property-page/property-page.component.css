@@ -1,0 +1,787 @@
+.property-details-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Back Link Navigation */
+.page-nav-header {
+  margin-bottom: -0.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  cursor: pointer;
+}
+
+.back-link:hover {
+  color: var(--primary);
+  transform: translateX(-4px);
+}
+
+.property-title-block {
+  margin-top: -0.5rem;
+}
+
+.page-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+/* Stats Row Grid */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.property-stat-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+}
+
+.stat-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.stat-number {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-main);
+}
+
+.stat-icon-container {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Colors for specific statistic cards */
+.text-warning {
+  border-left: 4px solid var(--warning);
+}
+.warning-bg {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.text-primary {
+  border-left: 4px solid var(--primary);
+}
+.primary-bg {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.text-danger {
+  border-left: 4px solid var(--danger);
+}
+.danger-bg {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.text-success {
+  border-left: 4px solid var(--success);
+}
+.success-bg {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+/* Property Bookings Section */
+.property-bookings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.bookings-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.bookings-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-export,
+.btn-add {
+  white-space: nowrap;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.25rem;
+}
+
+.section-header {
+  margin-bottom: 0.25rem;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .bookings-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .bookings-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .btn-export,
+  .btn-add {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .page-title {
+    font-size: 1.75rem;
+  }
+}
+
+/* Property Expenses Section Styles */
+.expense-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.expense-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.25rem;
+}
+
+.expense-header-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.expense-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+.expense-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.expense-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.expense-summary-box {
+  background-color: var(--danger-light);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.total-expense-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--danger);
+  letter-spacing: 0.05em;
+}
+
+.total-expense-amount {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--danger);
+  margin-top: 0.1rem;
+}
+
+.btn-add-expense {
+  font-size: 0.9rem;
+  padding: 0.65rem 1.25rem;
+  white-space: nowrap;
+}
+
+/* Download Icon Button */
+.btn-icon-download {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-icon-download:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+/* Calendar Style Export Modal */
+.export-modal-calendar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  z-index: 2001;
+  min-width: 420px;
+  max-width: 480px;
+  width: 100%;
+  padding: 2rem;
+  animation: slideDown 0.25s ease-out;
+}
+
+.calendar-inputs-container {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-end;
+  margin-bottom: 1.25rem;
+}
+
+.calendar-picker {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.calendar-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.calendar-input {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.calendar-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.calendar-icon {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.calendar-sep {
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  font-weight: 600;
+  align-self: flex-end;
+  margin-bottom: 0.35rem;
+}
+
+.calendar-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.btn-download-compact {
+  flex: 0 1 auto;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  z-index: 2002;
+}
+
+.btn-download-compact:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.btn-download-compact:active {
+  transform: translateY(0);
+}
+
+.btn-icon-close-compact {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  padding: 0;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  z-index: 2002;
+  flex-shrink: 0;
+}
+
+.btn-icon-close-compact:hover {
+  background-color: var(--border-color);
+  color: var(--text-main);
+}
+
+.icon-xs {
+  width: 14px;
+  height: 14px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Expenses Table and Body */
+.expense-body {
+  position: relative;
+}
+
+.empty-expenses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--primary-light);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-focus);
+}
+
+.empty-expenses-icon-wrapper {
+  background-color: #FFFFFF;
+  color: var(--primary);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+}
+
+.empty-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke-width: 1.5;
+}
+
+.empty-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.expense-table th {
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.expense-table td {
+  padding: 1rem;
+  font-size: 0.925rem;
+  color: var(--text-medium);
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.expense-table tr:hover {
+  background-color: var(--primary-light);
+}
+
+.date-cell {
+  font-weight: 500;
+  white-space: nowrap;
+  width: 15%;
+}
+
+.desc-cell {
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.amount-cell {
+  font-weight: 700;
+  color: var(--danger);
+  white-space: nowrap;
+  width: 15%;
+}
+
+.actions-cell {
+  width: 120px;
+  white-space: nowrap;
+}
+
+.actions-cell button {
+  margin: 0 0.15rem;
+}
+
+.btn-edit:hover {
+  color: var(--primary) !important;
+  background-color: var(--primary-light) !important;
+}
+
+.btn-delete:hover {
+  color: var(--danger) !important;
+  background-color: var(--danger-light) !important;
+}
+/* Custom Expense Modal Layout */
+.expense-modal-container {
+  max-width: 480px !important;
+}
+
+.modal-header-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title-custom {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background-color: var(--border-color);
+  color: var(--text-main);
+}
+
+.modal-body-custom {
+  padding: 1.5rem;
+}
+
+.modal-actions-custom {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.25rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.25rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .expense-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .expense-header-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .expense-summary-box {
+    align-items: flex-start;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .btn-add-expense {
+    flex: 1;
+    text-align: center;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .expense-table {
+    font-size: 0.85rem;
+  }
+
+  .expense-table th,
+  .expense-table td {
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Responsive export modal */
+  .export-modal-calendar {
+    min-width: auto;
+    width: 95%;
+    max-width: 450px;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .calendar-inputs-container {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .calendar-picker {
+    width: 100%;
+  }
+
+  .calendar-sep {
+    display: none;
+  }
+
+  .calendar-actions {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+
+  .btn-download-compact {
+    width: 100%;
+  }
+
+  .btn-icon-close-compact {
+    width: auto;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .property-stat-card {
+    padding: 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .expense-section {
+    gap: 1rem;
+  }
+
+  .expense-header {
+    gap: 0.75rem;
+  }
+
+  .expense-header-info {
+    min-width: auto;
+  }
+
+  .expense-title {
+    font-size: 1.1rem;
+  }
+
+  .total-expense-amount {
+    font-size: 1rem;
+  }
+
+  .expense-table {
+    font-size: 0.8rem;
+  }
+
+  .expense-table th,
+  .expense-table td {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .date-cell {
+    width: auto;
+  }
+
+  .amount-cell {
+    width: auto;
+  }
+
+  .actions-cell {
+    width: auto;
+  }
+
+  .actions-cell button {
+    margin: 0 0.1rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  /* Responsive export modal for very small screens */
+  .export-modal-calendar {
+    min-width: auto;
+    width: 90%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .calendar-label {
+    font-size: 0.75rem;
+  }
+
+  .calendar-input {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-download-compact {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .icon-xs {
+    width: 12px;
+    height: 12px;
+  }
+}
+

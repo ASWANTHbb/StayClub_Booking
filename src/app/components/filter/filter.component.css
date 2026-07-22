@@ -1,0 +1,73 @@
+.filter-card {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bg-card);
+  margin-bottom: 1.5rem;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 1fr;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.input-icon-wrapper .form-control {
+  padding-left: 2.75rem;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.filter-actions .btn {
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+/* Responsive breakdowns */
+@media (max-width: 1024px) {
+  .filter-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .filter-actions {
+    grid-column: span 2;
+    justify-content: flex-end;
+  }
+  
+  .filter-actions .btn {
+    flex: initial;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-actions {
+    grid-column: span 1;
+    width: 100%;
+  }
+  
+  .filter-actions .btn {
+    flex: 1;
+  }
+}

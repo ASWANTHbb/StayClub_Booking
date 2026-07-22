@@ -1,0 +1,73 @@
+<div class="add-booking-wrapper">
+  <div class="page-nav-header">
+    <a [routerLink]="['/property', propertySlug]" class="back-link">
+      <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to {{ propertyName }}
+    </a>
+  </div>
+
+  <div class="booking-form-card card">
+    <div class="form-header">
+      <div class="form-header-icon" style="background-color: var(--danger-light); color: var(--danger);">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <line x1="12" y1="1" x2="12" y2="23"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+      </div>
+      <div class="form-header-text">
+        <h1 class="form-title">{{ isEditMode ? 'Edit Expense' : 'Add Property Expense' }}</h1>
+        <p class="form-subtitle">{{ propertyName }} — Enter expense details and amount.</p>
+      </div>
+    </div>
+
+    <form #expenseForm="ngForm" (ngSubmit)="onSubmit(expenseForm)" class="form-grid">
+      <div class="form-group span-full">
+        <label class="form-label" for="amount">Amount (₹)</label>
+        <input
+          id="amount"
+          name="amount"
+          type="number"
+          min="1"
+          class="form-control"
+          placeholder="Enter expense amount (e.g. 500)..."
+          [(ngModel)]="amount"
+          required
+        />
+      </div>
+
+      <div class="form-group span-full">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          class="form-control"
+          placeholder="Enter expense description (e.g. Cleaning materials, paint job)..."
+          [(ngModel)]="description"
+          required
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="form-group span-full">
+        <label class="form-label" for="date">Date</label>
+        <input
+          id="date"
+          name="date"
+          type="date"
+          class="form-control"
+          [(ngModel)]="date"
+          required
+        />
+      </div>
+
+      <div class="form-actions span-full">
+        <button type="submit" class="btn btn-primary btn-save" [disabled]="expenseForm.invalid">
+          {{ isEditMode ? 'Update Expense' : 'Save Expense' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="bookings-wrapper">
+  
+  <!-- Header Action Row -->
+  <div class="bookings-header-row">
+    <div>
+      <h1 class="page-title">All Bookings</h1>
+      <p class="page-subtitle">Search, filter, and manage all guest reservations.</p>
+    </div>
+    
+    <div class="bookings-actions">
+      <button class="btn btn-secondary btn-action" (click)="openExportModal()">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Export Excel
+      </button>
+      <button class="btn btn-primary btn-action" (click)="openForm()">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Add Details +
+      </button>
+    </div>
+  </div>
+
+  <!-- Filters Section -->
+  <app-filter (filterChanged)="onFilterChanged($event)"></app-filter>
+
+  <!-- Bookings Grid List -->
+  <app-booking-list [bookings]="filteredBookings()"></app-booking-list>
+
+  <!-- Create Booking Modal Overlay -->
+  <div class="modal-backdrop" *ngIf="isFormOpen()" (click)="closeForm()">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+      <app-booking-form (closeForm)="closeForm()"></app-booking-form>
+    </div>
+  </div>
+
+  <!-- Export Date Range Modal -->
+  <div class="modal-backdrop" *ngIf="isExportModalOpen()" (click)="closeExportModal()">
+    <div class="export-modal" (click)="$event.stopPropagation()">
+      <div class="export-modal-header">
+        <h2 class="export-modal-title">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Export to Excel
+        </h2>
+        <button class="export-modal-close" (click)="closeExportModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <p class="export-modal-desc">Select a date range to export bookings for that period.</p>
+      <div class="export-calendar-container">
+        <div class="calendar-picker">
+          <div class="calendar-label">From Date</div>
+          <div class="calendar-input-wrapper">
+            <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <input id="export-from-date" type="date" class="calendar-input" [(ngModel)]="exportFromDate" />
+          </div>
+        </div>
+        
+        <div class="calendar-sep">→</div>
+        
+        <div class="calendar-picker">
+          <div class="calendar-label">To Date</div>
+          <div class="calendar-input-wrapper">
+            <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <input id="export-to-date" type="date" class="calendar-input" [(ngModel)]="exportToDate" />
+          </div>
+        </div>
+      </div>
+      <div class="export-modal-actions">
+        <button class="btn btn-secondary" (click)="closeExportModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="confirmExport()">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+

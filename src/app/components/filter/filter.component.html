@@ -1,0 +1,50 @@
+<div class="filter-card card">
+  <div class="filter-grid">
+    <div class="form-group">
+      <label class="form-label" for="search-name">Search by Customer Name</label>
+      <div class="input-icon-wrapper">
+        <svg class="icon input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          id="search-name"
+          type="text" 
+          class="form-control" 
+          placeholder="Enter guest name..." 
+          [(ngModel)]="customerName"
+          (keyup.enter)="onSearch()"
+        />
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label" for="filter-date">Filter by Check-in Date</label>
+      <div class="input-icon-wrapper">
+        <svg class="icon input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <input 
+          id="filter-date"
+          type="date" 
+          class="form-control" 
+          [(ngModel)]="checkInDate"
+          (change)="onSearch()"
+        />
+      </div>
+    </div>
+    
+    <div class="filter-actions">
+      <button class="btn btn-secondary" (click)="onReset()">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M23 4v6h-6"></path>
+          <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+        </svg>
+        Reset
+      </button>
+    </div>
+  </div>
+</div>

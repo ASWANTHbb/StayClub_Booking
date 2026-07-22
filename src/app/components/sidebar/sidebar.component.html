@@ -1,0 +1,25 @@
+<aside class="sidebar" [class.open]="bookingService.sidebarOpen()">
+  <ul class="nav-list">
+    <li>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onNavClick()" class="nav-item">
+        <svg class="icon nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="3" y="3" width="7" height="9"></rect>
+          <rect x="14" y="3" width="7" height="5"></rect>
+          <rect x="14" y="12" width="7" height="9"></rect>
+          <rect x="3" y="16" width="7" height="5"></rect>
+        </svg>
+        <span class="nav-label">Dashboard</span>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/today-bookings" routerLinkActive="active" (click)="onNavClick()" class="nav-item">
+        <svg class="icon nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span class="nav-label">Today's Bookings</span>
+      </a>
+    </li>
+  </ul>
+</aside>

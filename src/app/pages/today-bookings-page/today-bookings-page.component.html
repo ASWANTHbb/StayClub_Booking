@@ -1,0 +1,70 @@
+<div class="bookings-wrapper">
+  
+  <div class="bookings-header-row">
+    <div>
+      <h1 class="page-title">Today's Check-ins</h1>
+      <p class="page-subtitle">Active check-ins scheduled for today ({{ todayDateString | date:'mediumDate' }}).</p>
+    </div>
+    
+    <div class="bookings-actions">
+      <button class="btn btn-secondary btn-action" (click)="openExportModal()">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Export Excel
+      </button>
+    </div>
+  </div>
+
+  <app-filter (filterChanged)="onFilterChanged($event)"></app-filter>
+
+  <app-booking-list [bookings]="filteredTodayBookings()"></app-booking-list>
+
+  <!-- Export Date Range Modal -->
+  <div class="modal-backdrop" *ngIf="isExportModalOpen()" (click)="closeExportModal()">
+    <div class="export-modal" (click)="$event.stopPropagation()">
+      <div class="export-modal-header">
+        <h2 class="export-modal-title">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Export to Excel
+        </h2>
+        <button class="export-modal-close" (click)="closeExportModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <p class="export-modal-desc">Select a date range to export check-ins for that period.</p>
+      <div class="export-date-row">
+        <div class="form-group">
+          <label class="form-label" for="today-export-from-date">From Date</label>
+          <input id="today-export-from-date" type="date" class="form-control" [(ngModel)]="exportFromDate" />
+        </div>
+        <div class="export-date-sep">—</div>
+        <div class="form-group">
+          <label class="form-label" for="today-export-to-date">To Date</label>
+          <input id="today-export-to-date" type="date" class="form-control" [(ngModel)]="exportToDate" />
+        </div>
+      </div>
+      <div class="export-modal-actions">
+        <button class="btn btn-secondary" (click)="closeExportModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="confirmExport()">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

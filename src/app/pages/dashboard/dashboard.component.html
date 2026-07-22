@@ -1,0 +1,126 @@
+<div id="dashboard-top" class="dashboard-wrapper">
+  
+  <!-- Page Header -->
+  <!-- <div class="page-title-block">
+    <div>
+      <h1 class="page-title"></h1>
+      <p class="page-subtitle"></p>
+    </div>
+  </div> -->
+
+  <!-- Summary Cards Grid -->
+  <section class="summary-grid">
+    <div class="summary-card stat-properties">
+      <div class="stat-content">
+        <span class="stat-label">Total Properties</span>
+        <h2 class="stat-number">{{ stats().totalProperties }}</h2>
+      </div>
+      <div class="stat-icon-wrapper">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M3 21h18"></path>
+          <path d="M4 21V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v15"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="summary-card stat-bookings">
+      <div class="stat-content">
+        <span class="stat-label">Total Bookings</span>
+        <h2 class="stat-number">{{ stats().totalBookings }}</h2>
+      </div>
+      <div class="stat-icon-wrapper">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+      </div>
+    </div>
+
+    <div class="summary-card stat-checkins" routerLink="/today-bookings" style="cursor: pointer;">
+      <div class="stat-content">
+        <span class="stat-label">Today's Checkins</span>
+        <h2 class="stat-number">{{ stats().todaysCheckIns }}</h2>
+      </div>
+      <div class="stat-icon-wrapper">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      </div>
+    </div>
+
+    <div class="summary-card stat-pending">
+      <div class="stat-content">
+        <span class="stat-label">Pending Payments</span>
+        <h2 class="stat-number">{{ stats().pendingPayments }}</h2>
+      </div>
+      <div class="stat-icon-wrapper">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+    </div>
+
+    <div class="summary-card stat-completed">
+      <div class="stat-content">
+        <span class="stat-label">Completed Payments</span>
+        <h2 class="stat-number">{{ stats().completedPayments }}</h2>
+      </div>
+      <div class="stat-icon-wrapper">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties Grid Section -->
+  <section id="properties-section" class="section-block">
+    <div class="section-header">
+      <h2 class="section-title">Properties</h2>
+      <p class="section-subtitle">Click a property to view bookings and manage guest details.</p>
+    </div>
+    
+    <div class="properties-grid">
+      <div 
+        *ngFor="let prop of propertyStatsList()" 
+        (click)="onPropertyClick(prop.propertyName)"
+        class="property-card card card-hover"
+      >
+        <div class="prop-header">
+          <h3 class="prop-title">{{ prop.propertyName }}</h3>
+          <div class="prop-badge">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="prop-stats-grid">
+          <div class="prop-stat">
+            <span class="p-label">Today's Bookings</span>
+            <span class="p-value highlight-warning">{{ prop.todaysBookingsCount }}</span>
+          </div>
+          <div class="prop-stat">
+            <span class="p-label">Total Bookings</span>
+            <span class="p-value">{{ prop.totalBookingsCount }}</span>
+          </div>
+          <div class="prop-stat">
+            <span class="p-label">Pending Payments</span>
+            <span class="p-value highlight-danger">{{ prop.pendingPaymentsCount }}</span>
+          </div>
+          <div class="prop-stat">
+            <span class="p-label">Completed Payments</span>
+            <span class="p-value highlight-success">{{ prop.completedPaymentsCount }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,145 @@
+<div class="add-booking-wrapper">
+  <div class="page-nav-header">
+    <a [routerLink]="['/property', propertySlug]" class="back-link">
+      <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to {{ propertyName }}
+    </a>
+  </div>
+
+  <div class="booking-form-card card">
+    <div class="form-header">
+      <div class="form-header-icon">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="12" y1="18" x2="12" y2="12"></line>
+          <line x1="9" y1="15" x2="15" y2="15"></line>
+        </svg>
+      </div>
+      <div class="form-header-text">
+        <h1 class="form-title">{{ isEditMode ? 'Edit Booking' : 'Add Booking Details' }}</h1>
+        <p class="form-subtitle">{{ propertyName }} — Enter guest and payment information.</p>
+      </div>
+    </div>
+
+    <form #bookingForm="ngForm" (ngSubmit)="onSubmit(bookingForm)" class="form-grid">
+      <div class="form-group span-full">
+        <label class="form-label" for="customerName">Name</label>
+        <input
+          id="customerName"
+          name="customerName"
+          type="text"
+          class="form-control"
+          placeholder="Enter guest name..."
+          [(ngModel)]="customerName"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="numberOfGuests">Number of Guests</label>
+        <input
+          id="numberOfGuests"
+          name="numberOfGuests"
+          type="number"
+          min="1"
+          class="form-control"
+          [(ngModel)]="numberOfGuests"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="checkInTime">Check-in Time <span class="optional">(optional)</span></label>
+        <input
+          id="checkInTime"
+          name="checkInTime"
+          type="time"
+          class="form-control"
+          [(ngModel)]="checkInTime"
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="checkIn">Check-in Date</label>
+        <input
+          id="checkIn"
+          name="checkIn"
+          type="date"
+          class="form-control"
+          [(ngModel)]="checkInDate"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="checkOut">Check-out Date</label>
+        <input
+          id="checkOut"
+          name="checkOut"
+          type="date"
+          class="form-control"
+          [(ngModel)]="checkOutDate"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="totalPayment">Total Payment ($)</label>
+        <input
+          id="totalPayment"
+          name="totalPayment"
+          type="number"
+          min="0"
+          class="form-control"
+          [(ngModel)]="totalPayment"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="advanceAmount">Advance Payment ($)</label>
+        <input
+          id="advanceAmount"
+          name="advanceAmount"
+          type="number"
+          min="0"
+          class="form-control"
+          [(ngModel)]="advanceAmount"
+          required
+        />
+      </div>
+
+      <div class="form-group span-full">
+        <label class="form-label" for="pendingPayment">Pending Payment ($)</label>
+        <input
+          id="pendingPayment"
+          name="pendingPayment"
+          type="number"
+          class="form-control pending-field"
+          [value]="pendingPayment"
+          readonly
+        />
+      </div>
+
+      <div class="form-actions span-full">
+        @if (isEditMode) {
+          <button type="button" class="btn btn-danger btn-delete" (click)="onDelete()">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Delete
+          </button>
+        }
+        <button type="button" class="btn btn-secondary btn-cancel" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-save" [disabled]="bookingForm.invalid">
+          {{ isEditMode ? 'Update Booking' : 'Save Booking' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
