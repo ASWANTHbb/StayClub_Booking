@@ -7,7 +7,7 @@ import * as ExcelJS from 'exceljs';
 // ─────────────────────────────────────────────────────────────
 // Backend API URL — change port if your server runs elsewhere
 // ─────────────────────────────────────────────────────────────
-const API_URL = 'http://localhost:3000/api/bookings';
+const API_URL = 'https://stayclub-booking-api.onrender.com/api/bookings';
 
 @Injectable({
   providedIn: 'root'

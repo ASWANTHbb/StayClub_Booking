@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Expense } from '../models/booking.model';
 import * as ExcelJS from 'exceljs';
 
-const API_URL = 'http://localhost:3000/api/expenses';
+const API_URL = 'https://stayclub-booking-api.onrender.com/api/expenses';
 
 @Injectable({
   providedIn: 'root'
