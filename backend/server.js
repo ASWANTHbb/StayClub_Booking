@@ -20,7 +20,11 @@ connectDB();
 
 // Allow Angular dev server (localhost:4200) to call this API
 app.use(cors({
-  origin: ['http://localhost:4200', 'http://localhost:4201'],
+  origin: [
+    'http://localhost:4200',
+    'http://localhost:4201',
+    'https://stayclub-booking-1.onrender.com'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
